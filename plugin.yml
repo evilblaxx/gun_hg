@@ -1,0 +1,8 @@
+name: Gunz-SurvivalGames
+main: com.gun.tyler.GunGame
+version: 0.2
+depend: [SurvivalGames]
+commands:
+        gg:
+             description: main cmd
+             usage: /dp <argo>        
