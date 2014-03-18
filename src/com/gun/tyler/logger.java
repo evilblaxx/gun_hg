@@ -10,7 +10,7 @@ private static String v;
 	public logger (GunGame instance){
 		plugin = instance;
 		log = Logger.getLogger("Minecraft");
-		v = "0.2";
+		v = plugin.getDescription().getVersion();
 	}
 	public static String getVersion(){
 		return v;

@@ -2,6 +2,7 @@ package com.gun.tyler;
 
 
 import java.io.File;
+import java.io.IOException;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.PluginManager;
@@ -18,6 +19,7 @@ public class GunGame extends JavaPlugin{
 	File gunsFile;
 	FileConfiguration guns;
 	Arena arena;
+	//hello
 	private GunManager gunman;
 	private logger logger = new logger(this);
 
@@ -37,9 +39,21 @@ public class GunGame extends JavaPlugin{
         saveConfig();
         arena = new Arena(this);
         
-        logger.enabled(true);        
+        logger.enabled(true);
+        checkUpdates();
+        
+        try {
+            MetricsLite metrics = new MetricsLite(this);
+            metrics.start();
+        } catch (IOException e) {
+            // Failed to submit the stats :-(
+        }
 	}	
 	
+	private void checkUpdates() {
+		new Updater(this, 76163, this.getFile(), Updater.UpdateType.DEFAULT, true);
+	}
+
 	public void onDisable(){
 		logger.enabled(false);
 		
